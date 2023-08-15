@@ -1,8 +1,16 @@
+.wordContainer, .definitionContainer {
+    font-size: 28px;
+    text-align: center;
+}
+
+.wordContainer {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .image {
     height: 400px;
-    width: 100%;
     background-image: url(/assets/images/alfons-morales-YLSwjSy7stw-unsplash.jpg);
     background-size: cover;
-    background-position: center;
     margin-top: -48px;
 }
