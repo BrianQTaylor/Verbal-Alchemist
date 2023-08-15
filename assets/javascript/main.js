@@ -1,11 +1,10 @@
 var wordAPI = "https://random-word-api.herokuapp.com/word?number=1";
-// var dicAPI = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word.textContent}?key=661a7679-224c-4c9c-a51a-3baa9e09eca3`;
 
 var body = document.querySelector("body")
 var button = document.getElementById("button");
-var word = document.createElement(`h1`)
-var definition = document.createElement(`p`)
-body.appendChild(definition) 
+var word = document.getElementById(`wordContainer`)
+var definition = document.getElementById(`definitionContainer`)
+ 
 
 var randomWord = () => {
     fetch(wordAPI)
@@ -14,7 +13,6 @@ var randomWord = () => {
         })
         .then (response => {
         word.textContent = response;
-        body.appendChild(word);
         randomDefinition(word);
         })
 }
@@ -28,7 +26,7 @@ var randomDefinition = (word) => {
         console.log(response[0].shortdef);
         if (response[0].shortdef)
         definition.textContent = "Definition: " + response[0].shortdef;
-        body.appendChild(definition)
+        
     })  
     .catch(err => {
         console.log(err)
@@ -39,7 +37,5 @@ var randomDefinition = (word) => {
 
 generateButton.addEventListener("click", function(){
      randomWord();
-
-    console.log("button clicked")
  })
 

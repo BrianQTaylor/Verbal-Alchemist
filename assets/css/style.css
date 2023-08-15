@@ -1,0 +1,19 @@
+
+
+
+
+
+
+
+
+
+
+.wordContainer, .definitionContainer {
+    font-size: 28px;
+    text-align: center;
+}
+
+.wordContainer {
+    font-weight: bold;
+    text-transform: uppercase;
+}
