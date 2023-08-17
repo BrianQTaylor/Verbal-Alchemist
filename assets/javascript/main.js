@@ -21,9 +21,9 @@ var randomDefinition = (word) => {
     fetch(`https:www.dictionaryapi.com/api/v3/references/collegiate/json/${word.innerText}?key=661a7679-224c-4c9c-a51a-3baa9e09eca3`)
         .then(response =>{
         return response.json()
+
     })
     .then (response => {
-        console.log(response[0].shortdef);
         if (response[0].shortdef)
         definition.textContent = "Definition: " + response[0].shortdef;
         

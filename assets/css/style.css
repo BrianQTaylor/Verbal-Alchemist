@@ -8,9 +8,9 @@
     text-transform: uppercase;
 }
 
-.image {
+img {
     height: 400px;
-    background-image: url(/assets/images/alfons-morales-YLSwjSy7stw-unsplash.jpg);
+    width: 100%;
     background-size: cover;
     margin-top: -48px;
 }
