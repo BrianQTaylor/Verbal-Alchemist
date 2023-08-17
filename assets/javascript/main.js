@@ -25,7 +25,7 @@ var randomDefinition = (word) => {
     .then (response => {
         console.log(response[0].shortdef);
         if (response[0].shortdef)
-        definition.textContent = "Definition: " + response.shortdef;
+        definition.textContent = "Definition: " + response[0].shortdef;
         
     })  
     .catch(err => {
