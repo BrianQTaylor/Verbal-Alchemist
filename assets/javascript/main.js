@@ -18,7 +18,7 @@ var randomWord = () => {
 }
 
 var randomDefinition = (word) => {
-    fetch(`https:www.dictionaryapi.com/api/v3/references/collegiate/json/${word.innerText}?key=661a7679-224c-4c9c-a51a-3baa9e09eca3`)
+    fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word.innerText}?key=661a7679-224c-4c9c-a51a-3baa9e09eca3`)
         .then(response =>{
         return response.json()
 
