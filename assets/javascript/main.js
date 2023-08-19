@@ -13,12 +13,15 @@ var randomWord = () => {
         })
         .then (response => {
         word.textContent = response;
-        randomDefinition(word);
+        console.log(word)
+        console.log(word.innerText)
+        randomDefinition(response);
         })
 }
 
 var randomDefinition = (word) => {
-    fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word.innerText}?key=661a7679-224c-4c9c-a51a-3baa9e09eca3`)
+    //https://www.dictionaryapi.com/api/v3/references/collegiate/json/voluminous?key=your-api-key
+    fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=661a7679-224c-4c9c-a51a-3baa9e09eca3`)
         .then(response =>{
         return response.json()
 
