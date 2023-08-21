@@ -5,8 +5,8 @@ var button = document.getElementById("button");
 var word = document.getElementById(`wordContainer`)
 var definition = document.getElementById(`definitionContainer`)
 var saveBTN = document.getElementById("save")
-
-
+var storeWord = document.getElementById("storeWord")
+var storeDefiniton = document.getElementById("storeDefinition")
 
 var randomWord = () => {
     fetch(wordAPI)
@@ -62,9 +62,40 @@ generateButton.addEventListener("click", function(){
             word: savedWord,
             definition: savedDefinition
         };
+
+//    // Get existing saved data from local storage or create an empty array
+//    const existingSavedDataJSON = localStorage.getItem("savedData");
+//    const existingSavedData = existingSavedDataJSON ? JSON.parse(existingSavedDataJSON) : [];
+
+//    // Add the new saved data to the array
+//    existingSavedData.push(savedData);
+
+//    // Store the updated array in local storage
+//    localStorage.setItem("savedData", JSON.stringify(existingSavedData));
+
+
         localStorage.setItem("savedData", JSON.stringify(savedData));
         console.log("Word and definition saved to local storage!");
     } else {
         console.log("No word or definition to save.");
     }
+});
+
+// Function to display saved data on the screen
+var displaySavedData = () => {
+    var savedDataJSON = localStorage.getItem("savedData");
+    
+    if (savedDataJSON) {
+        const savedData = JSON.parse(savedDataJSON);
+        storeWord.textContent = savedData.word;
+        storeDefiniton.textContent = savedData.definition;
+        console.log("Saved data loaded from local storage!");
+    } else {
+        console.log("No saved data found in local storage.");
+    }
+};
+
+// Call the function to display saved data when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    displaySavedData();
 });
