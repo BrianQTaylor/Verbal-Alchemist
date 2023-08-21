@@ -6,7 +6,7 @@ var word = document.getElementById(`wordContainer`)
 var definition = document.getElementById(`definitionContainer`)
 var saveBTN = document.getElementById("save")
 var storeWord = document.getElementById("storeWord")
-var storeDefiniton = document.getElementById("storeDefinition")
+var storeDefinition = document.getElementById("storeDefinition")
 
 var randomWord = () => {
     fetch(wordAPI)
@@ -88,7 +88,7 @@ var displaySavedData = () => {
     if (savedDataJSON) {
         const savedData = JSON.parse(savedDataJSON);
         storeWord.textContent = savedData.word;
-        storeDefiniton.textContent = savedData.definition;
+        storeDefinition.textContent = savedData.definition;
         console.log("Saved data loaded from local storage!");
     } else {
         console.log("No saved data found in local storage.");
