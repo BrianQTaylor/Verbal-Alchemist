@@ -21,43 +21,50 @@ var randomWord = () => {
 
 var randomDefinition = (word) => {
     fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=661a7679-224c-4c9c-a51a-3baa9e09eca3`)
-        .then(response =>{
-        return response.json()
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(response => {
+        console.log(response);
 
+        if (Array.isArray(response) && response.length === 20) {
+            // Log an error if the response is an array of 20 items
+            console.error('API response contains 20 items');
+            definition.textContent = "Word Cannot be defined";
+        } else if (response[0]?.shortdef) {
+            // Display the definition if it exists
+            definition.textContent = "Definition: " + response[0].shortdef;
+        } else {
+            // Display an error message if definition doesn't exist
+            definition.textContent = "Word cannot be defined";
+        }
     })
-    .then (response => {
-        console.log(response)
-        if (response[0].shortdef)
-        definition.textContent = "Definition: " + response[0].shortdef;
-        
-    })  
     .catch(err => {
-// insert a p tag here saying "Can not define word"
-// need to figure out how to make this message pop up if the the length is greater than one 
-if (response[0].shortdef.length[0])
-definition.textContent = "Can not define the word"
-        console.log(err)
-    })
+        console.error('Error fetching or processing API:', err);
+        definition.textContent = "Error fetching definition";
+    });
 
 }
-
-
-
-
-//local storage
-saveBTN.addEventListener("click", function(){
-    //console.log("hello")
-    const word = word
-    const definition = randomDefinition
-    const favorword = {word, definition}
-    localStorage.setItem("word", JSON.stringify(favoriteword))
-   })
-   
-   // fix below
-   var favoriteFruit = JSON.parse(localStorage.getItem("word"))
-
 
 generateButton.addEventListener("click", function(){
      randomWord();
  })
 
+ saveBTN.addEventListener("click", () => {
+    const savedWord = word.textContent;
+    const savedDefinition = definition.textContent;
+
+    if (savedWord && savedDefinition) {
+        const savedData = {
+            word: savedWord,
+            definition: savedDefinition
+        };
+        localStorage.setItem("savedData", JSON.stringify(savedData));
+        console.log("Word and definition saved to local storage!");
+    } else {
+        console.log("No word or definition to save.");
+    }
+});
