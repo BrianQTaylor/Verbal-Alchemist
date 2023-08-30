@@ -62,18 +62,6 @@ generateButton.addEventListener("click", function(){
             word: savedWord,
             definition: savedDefinition
         };
-
-//    // Get existing saved data from local storage or create an empty array
-//    const existingSavedDataJSON = localStorage.getItem("savedData");
-//    const existingSavedData = existingSavedDataJSON ? JSON.parse(existingSavedDataJSON) : [];
-
-//    // Add the new saved data to the array
-//    existingSavedData.push(savedData);
-
-//    // Store the updated array in local storage
-//    localStorage.setItem("savedData", JSON.stringify(existingSavedData));
-
-
         localStorage.setItem("savedData", JSON.stringify(savedData));
         console.log("Word and definition saved to local storage!");
     } else {
@@ -87,6 +75,7 @@ var displaySavedData = () => {
     
     if (savedDataJSON) {
         const savedData = JSON.parse(savedDataJSON);
+        console.log(savedData)
         storeWord.textContent = savedData.word;
         storeDefinition.textContent = savedData.definition;
         console.log("Saved data loaded from local storage!");
@@ -96,6 +85,4 @@ var displaySavedData = () => {
 };
 
 // Call the function to display saved data when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-    displaySavedData();
-});
+document.addEventListener("click", displaySavedData);

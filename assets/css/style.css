@@ -6,6 +6,17 @@ img {
     margin-top: -48px;
 }
 
+.row {
+    font-size: 25px; 
+}
+
+.generateButton {
+    margin-left: 43%;
+    margin-bottom: 10%;
+    font-size: 30px;
+    margin-top: 5%;
+}
+
 .wordContainer, .definitionContainer {
     font-size: 28px;
     text-align: center;
@@ -16,6 +27,18 @@ img {
     text-transform: uppercase;
 }
 
+.save {
+    margin-left: 42%;
+    font-size: 30px;
+    margin-top: 5%;
+}
+
+.stored {
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 10px solid black
+}
 
 .storeWord, .storeDefinition {
     font-size: 28px;
@@ -31,6 +54,3 @@ footer {
     height: 100px;
 }
 
-#save {
-    margin-left: 48%;
-}
